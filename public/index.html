@@ -44,6 +44,14 @@
       var $userList = $('.users ul');
       var $messageList = $('.messages ul');
 
+      function attachMessage (message) {
+        var $li = $('<li class="message">');
+        var $username = $('<div class="username">').text(message.username);
+        var $content = $('<div class="content">').text(message.content);
+        $messageList.append( $li.append($username).append($content) );
+        $messageList.scrollTop(50000);
+      };
+
       socket.on('server current users', function (users) {
         $.each(users, function (i, user) {
           $userList.append( $('<li>').text(user) );
@@ -52,20 +60,12 @@
 
       socket.on('server current messages', function (messages) {
         $.each(messages, function (i, message) {
-          var $li = $('<li class="message">');
-          var $username = $('<div class="username">').text(message.username);
-          var $content = $('<div class="content">').text(message.content);
-          $messageList.append( $li.append($username).append($content) );
-          $messageList.scrollTop(50000);
+          attachMessage(message);
         });
       });
 
       socket.on('server new message', function (message) {
-        var $li = $('<li class="message">');
-        var $username = $('<div class="username">').text(message.username);
-        var $content = $('<div class="content">').text(message.content);
-        $messageList.append( $li.append($username).append($content) );
-        $messageList.scrollTop(50000);
+        attachMessage(message);
       });
 
       socket.on('server confirm user', function (user) {
@@ -107,8 +107,17 @@
         $newMessage.on('submit', function (e) {
           e.preventDefault();
           var message = this.elements.message.value;
-          socket.emit('user new message', message);
-          this.reset();
+
+          if (message.length > 0) {
+            socket.emit('user new message', message);
+            this.reset();
+          }
+        });
+
+        $(window).bind("load resize", function (e) {
+          var listHeight = $(window).height() * 2 / 3;
+          $('.users ul, .messages ul').height( listHeight );
+          $messageList.scrollTop(50000);
         });
       });
     </script>

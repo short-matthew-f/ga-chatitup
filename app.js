@@ -27,6 +27,8 @@ io.on('connection', function (socket) {
       id: socket.id,
       name: name
     });
+
+    if (Object.keys(userNames).length == 0) { messages = []; };
   });
 
   socket.on('user new message', function (message) {
@@ -56,6 +58,6 @@ io.on('connection', function (socket) {
   });
 });
 
-http.listen((process.env.PORT || 5000), function () {
+http.listen((process.env.PORT || 3000), function () {
   console.log("Server is now up");
 })
