@@ -103,7 +103,7 @@ input[type="submit"] {
 }
 
 .username.me {
-  color: goldenrod;
+  color: navy;
 }
 
 .username:after {
