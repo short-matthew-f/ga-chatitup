@@ -49,6 +49,11 @@
         var $username = $('<div class="username">').text(message.username);
         var $content = $('<div class="content">').text(message.content);
         $messageList.append( $li.append($username).append($content) );
+
+        if (username == message.username) {
+          $username.addClass("me");
+        };
+
         $messageList.scrollTop(50000);
       };
 

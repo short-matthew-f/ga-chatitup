@@ -102,6 +102,10 @@ input[type="submit"] {
   color: maroon;
 }
 
+.username.me {
+  color: goldenrod;
+}
+
 .username:after {
   content: " said:";
 }
