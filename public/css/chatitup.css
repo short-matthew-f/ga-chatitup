@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+*:before, *:after { box-sizing: inherit; }
+
+body {
+  background: #aaa;
+  font-family: sans-serif;
+}
+
+ul { list-style: none; }
+
+form {
+  display: block;
+  width: 100%;
+}
+
+input[type="text"] {
+  width: 100%;
+  font-size: 32px;
+  line-height: 32px;
+  padding: 8px 16px;
+}
+
+input[type="submit"] {
+  display: none;
+}
+
+#choose-username {
+  background: darkgreen;
+  position: fixed;
+  padding: 32px 16px;
+  height: 100%;
+
+  z-index: 10;
+}
+
+#choose-username h1 {
+  font-size: 48px;
+
+  border-bottom: 1px solid white;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+
+  color: white;
+}
+
+.chat-app {
+  position: relative;
+  padding: 16px;
+}
+
+.chat-app:after, .message:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+#new-message {
+  padding: 16px;
+}
+
+.users {
+  width: 20%;
+  float: left;
+}
+
+.users h1, .messages h1 {
+  font-size: 24px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid white;
+  margin-bottom: 8px;
+}
+
+.users li, .messages li {
+  margin: 8px 0px;
+  font-weight: bold;
+  color: maroon;
+}
+
+.messages {
+  width: 75%;
+  margin-left: 5%;
+  float: left;
+}
+
+.users ul, .messages ul {
+  height: 500px;
+  overflow: scroll;
+  font-size: 20px;
+}
+
+.username {
+  min-width: 15%;
+  margin-right: 12px;
+  float: left;
+  font-weight: bold;
+  color: maroon;
+}
+
+.username:after {
+  content: " said:";
+}
+
+.content {
+  float: left;
+  font-weight: italic;
+  color: black;
+}
